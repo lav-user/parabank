@@ -1,3 +1,0 @@
-dtp.autoconfig=true
-dtp.project=Parabank Demo
-build.id=2021-08-22-U
