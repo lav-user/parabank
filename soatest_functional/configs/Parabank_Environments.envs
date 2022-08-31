@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Environments xmlns="http://www.parasoft.com/schema/environment/1.0" product="SOAtest">
+   <Environment name="dev1.parasoft.com">
+      <Variable>
+         <Name>BASEURL</Name>
+         <Value mask="false">http://dev1.parasoft.com:8091</Value>
+      </Variable>
+   </Environment>
+   <Environment name="qa1.parasoft.com">
+      <Variable>
+         <Name>BASEURL</Name>
+         <Value mask="false">http://qa1.parasoft.com:8090</Value>
+      </Variable>
+   </Environment>
+</Environments>
