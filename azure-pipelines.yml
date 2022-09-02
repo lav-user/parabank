@@ -28,7 +28,7 @@ steps:
     license.network.password=$(license.server.password)
     license.network.url=$(license.server.url)
     license.network.use.specified.server=true
-    license.network.user=lesambadu
+    license.network.user=admin
     soatest.license.network.edition=automation_edition
     soatest.license.use_network=true
     virtualize.license.network.edition=performance_server_edition
