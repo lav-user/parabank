@@ -1,0 +1,16 @@
+#
+# LoadTest
+#
+
+var ltc-data-root = C:\CONTINUOUS_LOAD_TEST\
+var project-name = Parabank
+var project-home = ${ltc-data-root}${project-name}
+var scenario = "Linear Increase"
+var base = C:\Workspaces\2020.2\Jenkins\loadtest\
+var category = Webservice
+var minutes = 1
+var test-name = commit
+
+open "${base}${test-name}.lt"
+
+loadtest -localSettings "${base}loadtest.localsettings" -minutes ${minutes} -allReports "C:\Program Files (x86)\Jenkins\workspace\Parabank Loadtest" ${scenario}
