@@ -17,7 +17,7 @@ steps:
     echo "Create ./temp directory for volume mount."
     mkdir temp
     echo ${PWD}
-    PWD
+    PWD -l
     echo "Copy SOAtest project contents to volume directory."
     cp -R $(soatest.project) temp/.
     
