@@ -1,0 +1,72 @@
+# Starter pipeline
+# Pull from Repo
+# Import Project into Docekr SOAtest CLI container and Run
+# Azure YAML docs:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+# Set Up Project
+steps:
+- script: |
+    echo "Starting Pipeline Execution."
+    echo "Create ./temp directory for volume mount."
+    mkdir temp
+    echo ${PWD}
+    echo "Copy SOAtest project contents to volume directory."
+    cp -R $(soatest.project) temp/.
+    
+    # Set Up and write .properties file
+    echo  -e "\n~~~\nSetting up and creating soatestcli.properties file.\n"
+    echo $"
+    license.network.auth.enabled=true  
+    license.network.password=$(license.server.password)
+    license.network.url=$(license.server.url)
+    license.network.use.specified.server=true
+    license.network.user=admin
+    soatest.license.network.edition=automation_edition
+    soatest.license.use_network=true
+    virtualize.license.network.edition=performance_server_edition
+    virtualize.license.use_network=true" >> temp/soatestcli.properties
+    echo -e "\nDebug -- Verify workspace contents.\n"
+    ls -R
+    echo -e "\nDebug -- Verify soatestcli.properties file contents."
+    cat temp/soatestcli.properties
+
+    # Run Docker container with mount and run tests
+    echo -e "\n~~~\nRun SOAtestCLI Docker container & mount ./temp volume.\n"
+    
+    docker --version
+
+    docker run -i \
+    -u 0:0 \
+    -e ACCEPT_EULA=true \
+    -v "$(pwd)/temp:/temp" \
+    parasoft/soavirt /bin/bash -c " \
+    cat /temp/soatestcli.properties; \
+    soatestcli \
+    -settings /temp/soatestcli.properties \
+    -import /temp/$(soatest.project); \
+    soatestcli \
+    -resource /$(soatest.project) \
+    -config 'user://Example Configuration' \
+    -settings /temp/soatestcli.properties \
+    -report /temp"
+
+    echo -e "\nDebug -- Verify ./temp contents\n"
+    ls -R $(pwd)/temp
+  displayName: Run Tests
+  env:
+    pwd: $(Build.Repository.LocalPath)
+  
+# Publish Test Results
+- task: PublishParasoftTestResults@1
+  
+  displayName: Publish SOAtest Test Results
+  inputs:
+    testRunner: 'SOAtest9x'
+    testResultsFiles: '$(Build.Repository.LocalPath)/temp/rep*.xml'
