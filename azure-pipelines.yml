@@ -28,7 +28,7 @@ steps:
     license.network.url=$(license.server.url)
     license.network.use.specified.server=true
     license.network.user=admin
-    jtest.license.network.edition=automation_edition
+    jtest.license.network.edition=desktop_edition
     jtest.license.use_network=true" >> temp/jtestcli.properties
     echo -e "\nDebug -- Verify workspace contents.\n"
     ls -R
