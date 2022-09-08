@@ -15,7 +15,7 @@ steps:
 - script: |
     echo "Starting Pipeline Execution."
     echo "Create ./temp directory for volume mount."
-    mkdir temp
+   echo mkdir temp
     echo ${PWD}
     echo "Copy SOAtest project contents to volume directory."
     cp -R $(soatest.project) temp/.
