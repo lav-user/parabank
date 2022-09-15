@@ -48,14 +48,17 @@ steps:
     -v "$(pwd)/temp:/temp" \
     parasoft/jtest /bin/bash -c " \
     cat /temp/jtestcli.properties; \
-    jtestcli \
-    -settings /temp/jtestcli.properties \
-    -import /temp/$(jtest.project); \
-    jtestcli \
-    -resource /$(jtest.project) \
-    -config 'user://Example Configuration' \
-    -settings /temp/jtestcli.properties \
-    -report /temp"
+    - task: Maven@3
+      inputs:
+        mavenPomFile: 'pom.xml'
+        goals: 'process-test-classes jtest:agent test jtest:jtest -Djtest.config="builtin://Unit Tests" -Djacoco.skip=true -Dmaven.test.failure.ignore=true -Djtest.settingsList="/temp/jtestcli.properties" -Djtest.report="/temp"'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: false
 
     echo -e "\nDebug -- Verify ./temp contents\n"
     ls -R $(pwd)/temp
