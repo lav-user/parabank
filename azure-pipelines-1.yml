@@ -8,8 +8,28 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
 steps:
+- script: |
+    docker run --rm \
+    -u 0:0 \
+    -e ACCEPT_EULA=true \
+    -e EXEC="./mvnw" \
+    -v "$PWD/target":/opt/parasoft/jtest/examples/demo/target" \
+    parasoft/jtest /bin/bash -c " \
+    cat /temp/jtestcli.properties; \
+    jtestcli \
+    test-compile \
+    jtest:agent \
+    test \
+    jtest:jtest\
+    -Djtest.config="builtin://Demo Configuration" \
+  displayName: Run Tests
+  env:
+    pwd: $(Build.Repository.LocalPath)
+  
+- publish: /home/vsts/work/1/s/temp
+  artifact: TSA
+# Publish Test Results
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
