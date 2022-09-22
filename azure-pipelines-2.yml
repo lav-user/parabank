@@ -30,9 +30,9 @@ steps:
     ls -R
     echo -e "\nDebug -- Verify jtestcli.properties file contents."
     cat temp/jtestcli.properties
-    jtestcli -settings /temp/jtestcli.properties \
     docker run --rm -it parasoft/jtest bash \
     cd /opt/parasoft/jtest/examples/demo \
+    jtestcli -settings /temp/jtestcli.properties \
     ./gradlew clean jtest-agent test jtest -Djtest.config="builtin://Unit Tests" \
 
   displayName: 'Run a multi-line script'
