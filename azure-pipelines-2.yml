@@ -14,6 +14,10 @@ steps:
   displayName: 'Run a one-line script'
 
 - script: |
+    echo "Starting Pipeline Execution."
+    echo "Create ./temp directory for volume mount."
+    mkdir temp
+    echo ${PWD}
     # Set Up and write .properties file
     echo  -e "\n~~~\nSetting up and creating jtestcli.properties file.\n"
     echo $"
