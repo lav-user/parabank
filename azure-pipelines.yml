@@ -64,10 +64,10 @@ steps:
     -v "$(pwd)/temp:/temp" \
     parasoft/jtest /bin/bash -c " \
     cat /temp/soatestcli.properties; \
-    soatestcli \
+    jtestcli \
     -settings /temp/soatestcli.properties \
     -import /temp/$(soatest.project); \
-    soatestcli \
+    jtestcli \
     -resource /$(soatest.project) \
     -config 'user://Example Configuration' \
     -settings /temp/soatestcli.properties \
