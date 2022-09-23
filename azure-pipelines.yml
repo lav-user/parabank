@@ -47,15 +47,15 @@ steps:
     -e ACCEPT_EULA=true \
     -v "$(pwd)/temp:/temp" \
      parasoft/jtest /bin/bash -c " \
-    cp /home/vsts/work/1/s/temp /opt/parasoft/jtest \
-    cd /opt/parasoft/jtest/examples/demo \
+     cp -R /home/vsts/work/1/s/temp /opt/parasoft/jtest/. ; \
+     cd /opt/parasoft/jtest/examples/demo \
     jtestcli \
     -resource /$(jtest.project) \
     -config 'user://Example Configuration' \
     -settings /temp/jtestcli.properties \
     -report /temp"
     echo -e "\nDebug -- Verify ./temp contents\n"
-    ls -R $(pwd)/temp
+    #ls -R $(pwd)/temp
   displayName: Run Tests
   env:
     pwd: $(Build.Repository.LocalPath)
