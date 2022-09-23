@@ -38,7 +38,7 @@ steps:
     cat temp/jtestcli.properties
 
     # Run Docker container with mount and run tests
-    echo -e "\n~~~\nRun SOAtestCLI Docker container & mount ./temp volume.\n"
+    echo -e "\n~~~\nRun JtestCLI Docker container & mount ./temp volume.\n"
     
     docker --version
 
