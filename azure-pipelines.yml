@@ -46,7 +46,8 @@ steps:
     -u 0:0 \
     -e ACCEPT_EULA=true \
     -v "$(pwd)/temp:/temp" \
-     parasoft/jtest /bin/bash -c " \
+     parasoft/jtest bash \
+     cd /opt/parasoft/jtest/examples/demo \
      jtestcli \
     -resource /$(jtest.project) \
     -config 'user://Example Configuration' \
