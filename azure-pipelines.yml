@@ -48,9 +48,7 @@ steps:
     -v "$(pwd)/temp:/temp" \
      parasoft/jtest /bin/bash -c " \
     cp temp/jtestcli.properties /opt/parasoft/jtest; \
-    jtestcli \
-    -settings /temp/jtestcli.properties \
-    -import /temp/$(jtest.project); \
+    cd /opt/parasoft/jtest/examples/demo \
     jtestcli \
     -resource /$(jtest.project) \
     -config 'user://Example Configuration' \
