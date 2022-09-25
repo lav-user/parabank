@@ -59,7 +59,6 @@ steps:
     -e ACCEPT_EULA=true \
     -v /opt/parasoft/jtest/examples/demo:$PWD \
     lavanya93/jtest:2022.1.0 bash -c " \
-    cat /temp/soatestcli.properties; \
     /opt/parasoft/jtest/jtestcli \
     -settings /temp/soatestcli.properties \
     /opt/parasoft/jtest/jtestcli \
