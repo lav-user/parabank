@@ -57,12 +57,12 @@ steps:
 
     docker run -i \
     -e ACCEPT_EULA=true \
-    -v /opt/parasoft/jtest/examples/demo:$PWD \
-    lavanya93/jtest:2022.1.0 bash -c " \
-    /opt/parasoft/jtest/jtestcli \
+    -v /home/jtest/jtest/examples/demo:$PWD \
+    lavanya93/jtest:2022.1.0 /bin/bash -c " \
+    /home/jtest/jtest/jtestcli \
     -settings /temp/soatestcli.properties \
-    /opt/parasoft/jtest/jtestcli \
-    -resource /$(soatest.project) \
+    /home/jtest/jtest/jtestcli \
+    -resource /home/jtest/jtest/examples/demo \
     -config 'user://Example Configuration' \
     -settings /temp/soatestcli.properties \
     -publish \
