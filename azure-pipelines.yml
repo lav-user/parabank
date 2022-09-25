@@ -46,9 +46,8 @@ steps:
     -u 0:0 \
     -e ACCEPT_EULA=true \
     -v "$(pwd)/temp:/temp" \
-     parasoft/jtest bash \
+     parasoft/jtest /bin/bash -c " \
     cat /temp/jtestcli.properties; \
-    cd cd /opt/parasoft/jtest/examples/demo \
     jtestcli \
     -settings /temp/jtestcli.properties \
     -import /temp/$(jtest.project); \
