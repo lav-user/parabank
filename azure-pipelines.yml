@@ -63,7 +63,7 @@ steps:
     -e ACCEPT_EULA=true \
     -v "$(pwd)/temp:/temp" \
     lavanya93/jtest:2022.1.0 bash \
-    cd /opt/parasoft/jtest/examples/demo
+    cd /opt/parasoft/jtest/examples/demo \
     cat /temp/soatestcli.properties; \
     jtestcli \
     -settings /temp/soatestcli.properties \
