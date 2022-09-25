@@ -44,9 +44,6 @@ steps:
     license.network.user=admin
     jtest.license.network.edition=custom_edition
     jtest.license.custom_edition_features=Jtest, Static Analysis, Flow Analysis, OWASP Rules, CWE Rules, PCI DSS Rules, DISA STIG Rules, Security Rules, Automation, Desktop Command Line, DTP Publish, Coverage, Unit Test, Unit Test Bulk Creation, Unit Test Tier 1, Unit Test Tier 2, Unit Test Tier 3, Unit Test Tier 4, Unit Test Spring Framework, Change Based Testing
-    soatest.license.network.edition=automation_edition
-    soatest.license.use_network=true
-    virtualize.license.network.edition=performance_server_edition
     virtualize.license.use_network=true" >> temp/soatestcli.properties
     echo -e "\nDebug -- Verify workspace contents.\n"
     ls -R
@@ -61,7 +58,7 @@ steps:
     docker run --it \
     -e ACCEPT_EULA=true \
     -v $PWD:$PWD \
-    lavanya93/jtest:2022.1.0 bash \
+    lavanya93/jtest:2022.1.0 bash -c " \
     -w /opt/parasoft/jtest/examples/demo \
     cat /temp/soatestcli.properties; \
     jtestcli \
