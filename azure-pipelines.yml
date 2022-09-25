@@ -58,7 +58,7 @@ steps:
     
     docker --version
 
-    docker run --rm \
+    docker run --it \
     -e ACCEPT_EULA=true \
     -v $PWD:$PWD \
     lavanya93/jtest:2022.1.0 bash \
