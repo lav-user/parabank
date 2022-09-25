@@ -61,7 +61,7 @@ steps:
     lavanya93/jtest:2022.1.0 /bin/bash -c " \
     /home/jtest/jtest/jtestcli \
     -resource /home/jtest/jtest/examples/demo \
-    -data demo.data.json \
+    -data /home/jtest/jtest/examples/demo/demo.data.json \
     -config 'jtest.dtp://Recommended Rules' \
     -publish \
     -report /temp" \
