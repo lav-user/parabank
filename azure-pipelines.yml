@@ -61,7 +61,7 @@ steps:
     lavanya93/jtest:2022.1.0 /bin/bash -c " \
     /home/jtest/jtest/jtestcli \
     -resource /home/jtest/jtest/examples/demo \
-    -config 'user://Example Configuration' \
+    -config 'jtest.dtp://Recommended Rules' \
     -settings /temp/soatestcli.properties \
     -publish \
     -report /temp" \
