@@ -59,7 +59,7 @@ steps:
     -e ACCEPT_EULA=true \
     -v /opt/parasoft/jtest/examples/demo:$PWD \
     lavanya93/jtest:2022.1.0 bash -c " \
-    /opt/parasoft/jtest/jtestcli \
+    /home/jtest/jtestcli \
     -settings /temp/soatestcli.properties \
     /opt/parasoft/jtest/jtestcli \
     -resource /$(soatest.project) \
