@@ -60,8 +60,6 @@ steps:
     -v /home/jtest/jtest/examples/demo:$PWD \
     lavanya93/jtest:2022.1.0 /bin/bash -c " \
     /home/jtest/jtest/jtestcli \
-    -settings /temp/soatestcli.properties \
-    /home/jtest/jtest/jtestcli \
     -resource /home/jtest/jtest/examples/demo \
     -config 'user://Example Configuration' \
     -settings /temp/soatestcli.properties \
