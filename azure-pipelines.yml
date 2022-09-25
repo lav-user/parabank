@@ -55,11 +55,10 @@ steps:
     
     docker --version
 
-    docker run -it \
+    docker run -i \
     -e ACCEPT_EULA=true \
-    -v $PWD:$PWD \
+    -v /opt/parasoft/jtest/examples/demo:$PWD \
     lavanya93/jtest:2022.1.0 bash -c " \
-    cd /opt/parasoft/jtest/examples/demo \
     cat /temp/soatestcli.properties; \
     jtestcli \
     -settings /temp/soatestcli.properties \
