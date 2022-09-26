@@ -58,7 +58,7 @@ steps:
     -e ACCEPT_EULA=true \
     -v /home/vsts/work/1/s:/home/jtest/workspace/project \
     -v /usr/share/maven/conf:/root/.m2 \
-    lavanya93/jtest:2022.1 /bin/bash -c "mvn -U clean install jtest:jtest" \
+    lavanya93/jtest:2022.1 /bin/bash -c "mvn -U -e clean install jtest:jtest" \
     docker ps \
     echo -e "\nDebug -- Verify ./temp contents\n"
     ls -R $(pwd)/temp
