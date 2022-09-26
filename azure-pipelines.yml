@@ -53,8 +53,7 @@ steps:
     -e ACCEPT_EULA=true \
     -v $PWD:$PWD \
     -v $PWD:/root/.m2 \
-    lavanya93/jtest:2022.1.0 /bin/bash -c " \
-    ./gradlew clean jtest-agent test jtest -Djtest.config="builtin://Unit Tests" \
+    lavanya93/jtest:2022.1.0 /bin/bash -c "mvn clean install jtest:jtest" \
     docker ps \
     echo -e "\nDebug -- Verify ./temp contents\n"
     ls -R $(pwd)/temp
