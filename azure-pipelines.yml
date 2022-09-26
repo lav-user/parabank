@@ -51,7 +51,7 @@ steps:
 
     docker run -i \
     -e ACCEPT_EULA=true \
-    -v $PWD:$PWD \
+    -v /home/vsts/work/1/s:$PWD \
     -v $PWD:/root/.m2 \
     lavanya93/jtest:2022.1.0 /bin/bash -c "mvn clean install jtest:jtest" \
     docker ps \
