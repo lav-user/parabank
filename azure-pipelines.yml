@@ -54,12 +54,7 @@ steps:
     -v $PWD:$PWD \
     -v $PWD:/root/.m2 \
     lavanya93/jtest:2022.1.0 /bin/bash -c " \
-    /home/jtest/jtest/jtestcli \
-    -settings /home/vsts/work/1/s/temp/soatestcli.properties \
-    -data /home/jtest/jtest/examples/demo/demo.data.json \
-    -config 'jtest.dtp://Unit Tests' \
-    -publish \
-    -report /temp" \
+    "mvn clean install jtest:jtest" \
     docker ps \
     echo -e "\nDebug -- Verify ./temp contents\n"
     ls -R $(pwd)/temp
