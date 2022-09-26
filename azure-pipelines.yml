@@ -28,20 +28,20 @@ steps:
     dtp.password=$(license.server.password)
     dtp.share.enabled=true
     dtp.project=ADO_1
+    console.verbosity.level=high
     report.dtp.publish=true
-    techsupport.advanced=false
-    techsupport.auto_creation=true
-    techsupport.item.environment=true
-    techsupport.item.general=true
-    techsupport.archive_location=/temp
-    techsupport.send_email=false
-    techsupport.verbose=true
+    techsupport.create.on.exit=true
+    techsupport.enabled=true
+    techsupport.include.reports=true
+    techsupport.include.sources=true
     techsupport.verbose.scontrol=false
     license.network.auth.enabled=true  
     license.network.password=$(license.server.password)
     license.network.url=$(license.server.url)
     license.network.use.specified.server=true
     license.network.user=admin
+    jtest.license.network.type=ls
+    jtest.license.use_network=true
     jtest.license.network.edition=custom_edition
     jtest.license.custom_edition_features=Jtest, Static Analysis, Flow Analysis, OWASP Rules, CWE Rules, PCI DSS Rules, DISA STIG Rules, Security Rules, Automation, Desktop Command Line, DTP Publish, Coverage, Unit Test, Unit Test Bulk Creation, Unit Test Tier 1, Unit Test Tier 2, Unit Test Tier 3, Unit Test Tier 4, Unit Test Spring Framework, Change Based Testing" >> temp/soatestcli.properties
     echo -e "\nDebug -- Verify workspace contents.\n"
@@ -56,12 +56,12 @@ steps:
 
     docker run -i \
     -e ACCEPT_EULA=true \
-    -v /home/jtest/jtest/examples/demo:$PWD \
+    -v $PWD:$PWD \
+    -v $PWD:/root/.m2 \
     lavanya93/jtest:2022.1.0 /bin/bash -c " \
     /home/jtest/jtest/jtestcli \
     -data /home/jtest/jtest/examples/demo/demo.data.json \
-    -config 'jtest.dtp://Recommended Rules' \
-    -settings /temp/soatestcli.properties \
+    -config 'jtest.dtp://Unit Tests' \
     -publish \
     -report /temp" \
     docker ps \
