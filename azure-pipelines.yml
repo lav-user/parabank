@@ -19,7 +19,6 @@ steps:
     echo ${PWD}
     echo "Copy SOAtest project contents to volume directory."
     cp -R $(soatest.project) temp/.
-    cp -R /home/vsts/work/1/s /home/jtest/workspace/project/
     
     # Set Up and write .properties file
     echo  -e "\n~~~\nSetting up and creating soatestcli.properties file.\n"
@@ -48,6 +47,8 @@ steps:
     sudo apt updgrade
     sudo apt install maven -y
     mvn -version
+    cd /home/vsts
+    ls -R
 
     # Run Docker container with mount and run tests
     echo -e "\n~~~\nRun SOAtestCLI Docker container & mount ./temp volume.\n"
