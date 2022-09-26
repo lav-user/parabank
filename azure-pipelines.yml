@@ -19,7 +19,7 @@ steps:
     echo ${PWD}
     echo "Copy SOAtest project contents to volume directory."
     cp -R $(soatest.project) temp/.
-    cp -R /home/vsts/work/1/s /home/jtest/workspace/project/.
+    cp -R /home/vsts/work/1/s /home/jtest/workspace/project/
     
     # Set Up and write .properties file
     echo  -e "\n~~~\nSetting up and creating soatestcli.properties file.\n"
