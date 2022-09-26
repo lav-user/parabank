@@ -58,7 +58,7 @@ steps:
 
     docker run -i \
     -e ACCEPT_EULA=true \
-    -v /home/jtest/jtest/examples/Demo:/home/jtest/workspace/project \
+    -v /home/jtest/jtest/examples/demo:/home/jtest/workspace/project \
     -v /usr/share/maven/conf:/root/.m2 \
     lavanya93/jtest:2022.1 /bin/bash -c "mvn -U -e clean install jtest:jtest" \
     docker ps \
