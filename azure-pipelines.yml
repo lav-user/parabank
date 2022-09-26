@@ -62,7 +62,7 @@ steps:
     /home/jtest/jtest/jtestcli \
     -data /home/jtest/jtest/examples/demo/demo.data.json \
     -config 'jtest.dtp://Recommended Rules' \
-    -local settings temp/soatestcli.properties \
+    -settings temp/soatestcli.properties \
     -publish \
     -report /temp" \
     docker ps \
