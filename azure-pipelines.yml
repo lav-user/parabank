@@ -60,6 +60,7 @@ steps:
     -v $PWD:/root/.m2 \
     lavanya93/jtest:2022.1.0 /bin/bash -c " \
     /home/jtest/jtest/jtestcli \
+    -settings /temp/soatestcli.properties \
     -data /home/jtest/jtest/examples/demo/demo.data.json \
     -config 'jtest.dtp://Unit Tests' \
     -publish \
