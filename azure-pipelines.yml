@@ -59,7 +59,7 @@ steps:
     -v $PWD:$PWD \
     -v $PWD:/root/.m2 \
     lavanya93/jtest:2022.1.0 /bin/bash -c " \
-    COPY temp/soatestcli.properties /home/jtest/jtest/examples
+    COPY temp/soatestcli.properties /home/jtest/jtest/examples \
     /home/jtest/jtest/jtestcli \
     -settings /home/jtest/jtest/examples/soatestcli.properties \
     -data /home/jtest/jtest/examples/demo/demo.data.json \
