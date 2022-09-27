@@ -49,8 +49,11 @@ steps:
     sudo apt install maven -y
     mvn -version
     cd home/vsts
-    mkdir repository
     mkdir .m2
+    cd .m2
+    mkdir repository
+    cd root/.m2
+    ls -R
 
     # Run Docker container with mount and run tests
     echo -e "\n~~~\nRun SOAtestCLI Docker container & mount ./temp volume.\n"
