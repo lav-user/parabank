@@ -58,7 +58,7 @@ steps:
     
     docker --version
 
-    docker run -i \
+    sudo docker run -i \
     -e ACCEPT_EULA=true \
     -v /home/vsts/work/1/s:/home/jtest/workspace/project \
     -v /home/vsts/.m2:/root/.m2 \
