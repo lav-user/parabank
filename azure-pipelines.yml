@@ -52,7 +52,7 @@ steps:
     mkdir .m2
     cd .m2
     mkdir repository
-
+    cp -R /usr/share/maven/conf/settings.xml /home/vsts/.m2
     # Run Docker container with mount and run tests
     echo -e "\n~~~\nRun SOAtestCLI Docker container & mount ./temp volume.\n"
     
