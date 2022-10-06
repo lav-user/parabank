@@ -64,7 +64,7 @@ steps:
     -v /home/vsts/.m2:/root/.m2 \
     lavanya93/jtest:2022.1 /bin/bash -c " \
     jtestcli \
-    -resource /$(jtest.project) \
+    -resource /$(soatest.project) \
     -config 'user://Example Configuration' \
     -settings /temp/jtestcli.properties \
     -report /temp"
