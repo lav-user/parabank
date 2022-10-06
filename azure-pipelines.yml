@@ -82,3 +82,15 @@ steps:
     testRunner: 'SOAtest9x'
     testResultsFiles: '$(Build.Repository.LocalPath)/temp/rep*.xml'
 # docker cp $(System.DefaultWorkingDirectory) ctp20212-ltc-cam-1:/tmp/root/parasoft/techsupport/
+- task: AzureFileCopy@5
+  displayName: 'Example upload file'
+  inputs:
+  sourcepath:'$(Build.Repository.LocalPath)/temp/rep*.xml'
+  Destination:'AzureBlob' 
+  additionalArgumentsForBlobCopy: |
+      '/Y' # Supresses all AZCopy Confirmations. Used here to allow overwrites
+      '/Pattern:*' # Pattern of files to copy.
+      '/S' # Recursive Copy
+  storage: 'adoproject'
+  containerName: 'ado'
+  blobprefix:'targetdirectoryincontainer'
