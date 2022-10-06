@@ -85,12 +85,8 @@ steps:
 - task: AzureFileCopy@5
   displayName: 'Example upload file'
   inputs:
-  sourcepath:'$(Build.Repository.LocalPath)/temp/rep*.xml'
-  Destination:'AzureBlob' 
-  additionalArgumentsForBlobCopy: |
-      '/Y' # Supresses all AZCopy Confirmations. Used here to allow overwrites
-      '/Pattern:*' # Pattern of files to copy.
-      '/S' # Recursive Copy
-  storage: 'adoproject'
-  containerName: 'ado'
-  blobprefix:'targetdirectoryincontainer'
+    sourcepath:'$(Build.Repository.LocalPath)/temp/rep*.xml'
+    azureSubscription:Pay-As-You-Go
+    destination:AzureBlob  
+    storage:adoproject
+    containerName:ado
