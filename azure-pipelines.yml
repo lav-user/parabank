@@ -42,21 +42,10 @@ steps:
     
     docker --version
 
-    docker run -i \
-    -u 0:0 \
-    -e ACCEPT_EULA=true \
-    -v "$(pwd)/temp:/temp" \
-     parasoft/jtest /bin/bash -c " \
-    cat /temp/jtestcli.properties; \
-    jtestcli \
-    -settings /temp/jtestcli.properties \
-    -import /temp/$(jtest.project); \
-    jtestcli \
-    -resource /$(jtest.project) \
-    -config 'user://Example Configuration' \
-    -settings /temp/jtestcli.properties \
-    -report /temp"
-    echo -e "\nDebug -- Verify ./temp contents\n"
+    docker run --rm -it \
+    parasoft/jtest bash -c " \
+    cd /opt/parasoft/jtest/examples/demo \
+    ./gradlew clean jtest-agent test jtest -Djtest.config="builtin://Unit Tests"
     ls -R $(pwd)/temp
   displayName: Run Tests
   env:
