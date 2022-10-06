@@ -62,20 +62,17 @@ steps:
     -e ACCEPT_EULA=true \
     -v /home/vsts/work/1/s:/home/jtest/workspace/project \
     -v /home/vsts/.m2:/root/.m2 \
-    lavanya93/jtest:2022.1 /bin/bash -c "mvn -U -e clean install jtest:jtest" \
-    docker ps \
-    echo -e "\nDebug -- Verify ./temp contents\n"
-    ls -R $(pwd)/temp
+    lavanya93/jtest:2022.1 /bin/bash -c " \
+    /home/jtest/jtest/jtestcli \
+    -resource /$(soatest.project) \
+    -config 'user://Example Configuration' \
+    -settings /temp/jtestcli.properties \
+    -report /temp"
   displayName: Run Tests
   env:
     pwd: $(Build.Repository.LocalPath)
   
-- publish: 
-- task: AzureFileCopy@5
-  inputs:
-    SourcePath: '/home/vsts/work/1/s/temp'
-    Destination: 'AzureBlob'
-    ContainerName: 'ado'
+- publish: /home/vsts/work/1/s/temp
   artifact: TSA
 # Publish Test Results
 
@@ -86,3 +83,9 @@ steps:
     testRunner: 'SOAtest9x'
     testResultsFiles: '$(Build.Repository.LocalPath)/temp/rep*.xml'
 # docker cp $(System.DefaultWorkingDirectory) ctp20212-ltc-cam-1:/tmp/root/parasoft/techsupport/
+- task: AzureFileCopy@5
+  inputs:
+    SourcePath: 'TSA'
+    Destination: 'AzureBlob'
+    storage: 'adoproject'
+    ContainerName: 'ado'
