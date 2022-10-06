@@ -50,7 +50,8 @@ steps:
     
     docker --version
 
-    docker run -i \    
+    docker run -i \
+    -e ACCEPT_EULA=true \
     parasoft/jtest bash -c "./gradlew clean jtest-agent test -Djtest.config="builtin://Unit Tests"" \
     docker ps \
     echo -e "\nDebug -- Verify ./temp contents\n"
