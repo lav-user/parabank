@@ -70,12 +70,7 @@ steps:
   env:
     pwd: $(Build.Repository.LocalPath)
   
-- publish: 
-- task: AzureFileCopy@5
-  inputs:
-    SourcePath: '/home/vsts/work/1/s/temp'
-    Destination: 'AzureBlob'
-    ContainerName: 'ado'
+- publish: /home/vsts/work/1/s/temp
   artifact: TSA
 # Publish Test Results
 
@@ -86,3 +81,9 @@ steps:
     testRunner: 'SOAtest9x'
     testResultsFiles: '$(Build.Repository.LocalPath)/temp/rep*.xml'
 # docker cp $(System.DefaultWorkingDirectory) ctp20212-ltc-cam-1:/tmp/root/parasoft/techsupport/
+- task: AzureFileCopy@5
+  inputs:
+    SourcePath: 'TSA'
+    Destination: 'AzureBlob'
+    storage: 'adoproject'
+    ContainerName: 'ado'
