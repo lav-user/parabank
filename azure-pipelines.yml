@@ -70,7 +70,8 @@ steps:
   env:
     pwd: $(Build.Repository.LocalPath)
   
-- publish: - task: AzureFileCopy@5
+- publish: 
+- task: AzureFileCopy@5
   inputs:
     SourcePath: '/home/vsts/work/1/s/temp'
     Destination: 'AzureBlob'
