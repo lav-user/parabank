@@ -82,11 +82,15 @@ steps:
     testRunner: 'SOAtest9x'
     testResultsFiles: '$(Build.Repository.LocalPath)/temp/rep*.xml'
 # docker cp $(System.DefaultWorkingDirectory) ctp20212-ltc-cam-1:/tmp/root/parasoft/techsupport/
-- task: AzureFileCopy@5
-  displayName: 'Example upload file'
+- task: AzureFileCopy@4
+  displayName: Copy files to storage account
   inputs:
-    sourcepath:'$(Build.Repository.LocalPath)/temp/rep*.xml'
-    azureSubscription:Pay-As-You-Go
-    destination:AzureBlob  
-    storage:adoproject
-    containerName:ado
+    SourcePath: $(System.DefaultWorkingDirectory)/_artifactAlias/drop/*
+    azureSubscription: Pay-As-You-Go
+    Destination: AzureBlob
+    storage: adoproject
+    ContainerName: ado
+    BlobPrefix: FolderA/
+    AdditionalArgumentsForBlobCopy: |
+      --recursive=true `
+      --overwrite=true
