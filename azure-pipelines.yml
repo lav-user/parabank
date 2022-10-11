@@ -53,7 +53,8 @@ steps:
     docker run -i \
     -e ACCEPT_EULA=true \
     -v /home/vsts/work/1/s:/opt/parasoft/jtest/examples/demo \
-    parasoft/jtest bash -c ./gradlew clean jtest-agent test -Djtest.config="builtin://Unit Tests" \
+    -w /opt/parasoft/jtest/examples/demo \
+    parasoft/jtest bash -c "./gradlew clean jtest-agent test -Djtest.config="builtin://Unit Tests"" \
     docker ps \
     echo -e "\nDebug -- Verify ./temp contents\n"
     ls -R $(pwd)/temp
