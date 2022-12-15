@@ -70,6 +70,7 @@ steps:
     -resource /$(soatest.project) \
     -config 'user://Example Configuration' \
     -settings /temp/soatestcli.properties \
+    -publish \
     -report /temp" \
 
     docker ps \
