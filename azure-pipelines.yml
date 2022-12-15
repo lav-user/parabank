@@ -27,6 +27,8 @@ steps:
     dtp.user=admin
     dtp.password=$(license.server.password)
     dtp.share.enabled=true
+    dtp.additional.settings=report.dtp.publish\=true
+    dtp.enabled=true
     dtp.project=ADO
     report.dtp.publish=true
     techsupport.advanced=false
