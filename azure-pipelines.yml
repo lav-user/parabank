@@ -81,11 +81,3 @@ steps:
 - publish: /home/vsts/work/1/s/temp
   artifact: TSA
 # Publish Test Results
-
-- task: PublishParasoftTestResults@1
-  
-  displayName: Publish SOAtest Test Results
-  inputs:
-    testRunner: 'SOAtest9x'
-    testResultsFiles: '$(Build.Repository.LocalPath)/temp/rep*.xml'
-# docker cp $(System.DefaultWorkingDirectory) ctp20212-ltc-cam-1:/tmp/root/parasoft/techsupport/
