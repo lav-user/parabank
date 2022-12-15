@@ -70,7 +70,8 @@ steps:
     -resource /$(soatest.project) \
     -config 'user://Example Configuration' \
     -settings /temp/soatestcli.properties \
-    -report /temp" \
+    -report /temp" 
+
     docker ps \
     echo -e "\nDebug -- Verify ./temp contents\n"
     ls -R $(pwd)/temp
