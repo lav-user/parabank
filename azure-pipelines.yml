@@ -71,7 +71,7 @@ steps:
     -config 'user://Example Configuration' \
     -settings /temp/soatestcli.properties \
     -report /temp \
-    -publish \
+    -publish" \
 
     docker ps \
     echo -e "\nDebug -- Verify ./temp contents\n"
