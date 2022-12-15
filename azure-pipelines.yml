@@ -54,6 +54,7 @@ properties:
       storageAccountKey: <Storage account key>
 tags: {}
 type: Microsoft.ContainerInstance/containerGroups" >>temp/deploy-aci.yml
+az container create --resource-group myResourceGroup --file deploy-aci.yaml
 
     # Set Up and write .properties file
     echo  -e "\n~~~\nSetting up and creating soatestcli.properties file.\n"
