@@ -22,38 +22,38 @@ steps:
     
     echo $"
     apiVersion: '2019-12-01'
-location: eastus
-name: file-share-demo
-properties:
-  containers:
-  - name: hellofiles
+    location: eastus
+    name: file-share-demo
     properties:
-      environmentVariables: []
-      image: mcr.microsoft.com/azuredocs/aci-hellofiles
-      ports:
-      - port: 80
-      resources:
-        requests:
-          cpu: 1.0
-          memoryInGB: 1.5
-      volumeMounts:
-      - mountPath: /aci/logs/
-        name: filesharevolume
-  osType: Linux
-  restartPolicy: Always
-  ipAddress:
+    containers:
+    - name: hellofiles
+    properties:
+    environmentVariables: []
+    image: mcr.microsoft.com/azuredocs/aci-hellofiles
+    ports:
+    - port: 80
+    resources:
+    requests:
+    cpu: 1.0
+    memoryInGB: 1.5
+    volumeMounts:
+    - mountPath: /aci/logs/
+    name: filesharevolume
+    osType: Linux
+    restartPolicy: Always
+    ipAddress:
     type: Public
     ports:
-      - port: 80
+    - port: 80
     dnsNameLabel: aci-demo
-  volumes:
-  - name: filesharevolume
+    volumes:
+    - name: filesharevolume
     azureFile:
-      sharename: acishare
-      storageAccountName: <Storage account name>
-      storageAccountKey: <Storage account key>
-tags: {}
-type: Microsoft.ContainerInstance/containerGroups" >>temp/deploy-aci.yml
+    sharename: acishare
+    storageAccountName: <Storage account name>
+    storageAccountKey: <Storage account key>
+    tags: {}
+    type: Microsoft.ContainerInstance/containerGroups" >>temp/deploy-aci.yml
 
     # Set Up and write .properties file
     echo  -e "\n~~~\nSetting up and creating soatestcli.properties file.\n"
