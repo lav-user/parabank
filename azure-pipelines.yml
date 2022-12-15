@@ -65,8 +65,7 @@ steps:
     cat /temp/soatestcli.properties; \
     soatestcli \
     -settings /temp/soatestcli.properties \
-    -import /temp/$(soatest.project); \
-    soatestcli \
+    -import /temp/$(soatest.project) \
     -resource /$(soatest.project) \
     -config 'user://Example Configuration' \
     -settings /temp/soatestcli.properties \
