@@ -95,6 +95,14 @@ steps:
     
     docker --version
 
+     docker run -d \
+    -p 8090:8080 \
+    -p 8050:8050 \
+    -p 61616:61616 \
+    -p 9001:9001 \
+    --name parabankv1 \
+    parasoft/parabank
+
     docker run -i \
     -u 0:0 \
     -e ACCEPT_EULA=true \
