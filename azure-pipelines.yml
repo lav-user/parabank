@@ -94,6 +94,8 @@ steps:
     echo -e "\n~~~\nRun SOAtestCLI Docker container & mount ./temp volume.\n"
     
     docker --version
+
+    az login --username lesambadu@parasoft.com --password Fastconnected@1439
     az container create \
     --resource-group ADOProject_group \
     --name parabank-baseline \
