@@ -106,6 +106,9 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 az container show --resource-group ADOProject_group \
   --name parabank-baseline --query ipAddress.fqdn --output tsv
+az container exec -g ADOProject_group --name parabank-baseline --exec-command "/bin/bash"
+ cd /aci/logs/
+  ls
 
     docker run -i \
     -u 0:0 \
