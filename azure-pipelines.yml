@@ -94,7 +94,7 @@ steps:
     echo -e "\n~~~\nRun SOAtestCLI Docker container & mount ./temp volume.\n"
     
     docker --version
-az container create \
+    az container create \
     --resource-group ADOProject_group \
     --name parabank-baseline \
     --image lavanya93/parabank-baseline:2022 \
@@ -104,11 +104,9 @@ az container create \
     --azure-file-volume-account-key liZ+KvFZBAgxHMDkb8z7MdV9NPFfma0M0EjtgFLG2Yk2InBwwkJXjGfpe5r6Ljexn8XKOnif1rrg+AStdt6c/w== \
     --azure-file-volume-share-name parasoftfiles \
     --azure-file-volume-mount-path /aci/logs/
-az container show --resource-group ADOProject_group \
-  --name parabank-baseline --query ipAddress.fqdn --output tsv
-az container exec -g ADOProject_group --name parabank-baseline --exec-command "/bin/bash"
- cd /aci/logs/
-  ls
+
+    az container show --resource-group ADOProject_group \
+    --name parabank-baseline --query ipAddress.fqdn --output tsv
 
     docker run -i \
     -u 0:0 \
