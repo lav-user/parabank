@@ -95,7 +95,7 @@ steps:
     
     docker --version
 
-    az login --username lesambadu@parasoft.com --password Fastconnected@1439
+    az login --username $(username) --password $(password)
     az container create \
     --resource-group ADOProject_group \
     --name parabank-baseline \
